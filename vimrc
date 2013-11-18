@@ -22,6 +22,7 @@ Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-rsi'
+Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-sleuth'
@@ -123,7 +124,6 @@ set nu
 set wildmenu
 set wildmode=list:longest
 set formatoptions=qrn1l
-set ttimeoutlen=10
 " }}}
 
 " Use PCREs {{{
