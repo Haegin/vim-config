@@ -1,0 +1,4 @@
+This repository stores my Vim configuration files. I originally had them in my
+dotfiles repository but most of the changes were just vim plugin changes and
+maintaining submodules is a bit of a pain. With the switch to separate repos
+I also switched to using Vundle instead of Pathogen.
