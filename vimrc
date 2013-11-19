@@ -127,6 +127,11 @@ set formatoptions=qrn1l
 set list
 set listchars=tab:▶·,trail:·
 set hidden
+set splitbelow
+set splitright
+set virtualedit=block
+set hlsearch
+set smartcase
 " }}}
 
 " Use PCREs {{{
