@@ -124,6 +124,9 @@ set nu
 set wildmenu
 set wildmode=list:longest
 set formatoptions=qrn1l
+set list
+set listchars=tab:▶·,trail:·
+set hidden
 " }}}
 
 " Use PCREs {{{
