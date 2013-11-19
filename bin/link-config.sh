@@ -17,4 +17,7 @@ for item in *~(bin|README); do
   fi
 done
 
+echo "Installing the Vundled plugins"
+vim +BundleInstall +qall
+
 echo "\nFinished!"
