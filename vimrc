@@ -41,6 +41,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mhinz/vim-signify'
 Bundle 'chrisbra/csv.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'ervandew/supertab'
 " }}}
 
 " End of Bundles }}}
@@ -157,7 +159,10 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>gb :Gblame wCM<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>p :CtrlP<CR>
-nnoremap <leader>a :Ack 
+nnoremap <leader>. :CtrlPTag<CR>
+nnoremap <leader>m :CtrlPBufTag<CR>
+nnoremap <leader>a :Ag 
 nnoremap <leader>b :BuffergatorToggle<CR>
 nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>t :TagbarToggle<cr>
 " }}}
