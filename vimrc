@@ -27,6 +27,7 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-dispatch'
 " }}}
 
 " other authors {{{
@@ -43,6 +44,8 @@ Bundle 'mhinz/vim-signify'
 Bundle 'chrisbra/csv.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
+Bundle 'mamut/vim-css-hex'
+Bundle 'christoomey/vim-tmux-navigator'
 " }}}
 
 " End of Bundles }}}
@@ -60,7 +63,7 @@ let g:airline_theme = 'molokai'
 " Ctrl P {{{
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_regexp = 1
+let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 10000
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\.git$\|\.hg$\|\.svn$',
@@ -94,6 +97,9 @@ let g:treeExplVertical = 1
 let g:treeExplDirSort = 1
 let g:treeExplWinSize = 33
 let NERDTreeShowBookmarks = 1
+let NERDTreeWinPos = 'right'
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 " }}}
 
 " Configure colour scheme {{{
@@ -144,6 +150,8 @@ vnoremap / /\v
 " screen lines, not file lines {{{
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 " }}}
 
 """" Leader config {{{
@@ -151,18 +159,19 @@ nnoremap k gk
 let mapleader = ','
 noremap \ ,
 
-nnoremap <leader>r :retab<CR>
-" Clear trailing whitespace
-nnoremap <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-nnoremap <leader><space> :noh<cr>
-nnoremap <leader>u :GundoToggle<CR>
-nnoremap <leader>gb :Gblame wCM<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader><space> :noh<CR>
 nnoremap <leader>. :CtrlPTag<CR>
-nnoremap <leader>m :CtrlPBufTag<CR>
 nnoremap <leader>a :Ag 
 nnoremap <leader>b :BuffergatorToggle<CR>
-nnoremap <leader>n :NERDTreeToggle<cr>
-nnoremap <leader>t :TagbarToggle<cr>
+nnoremap <leader>d :Dispatch<CR>
+nnoremap <leader>gb :Gblame wCM<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>m :CtrlPBufTag<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader>r :retab<CR>
+nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
+" Clear trailing whitespace
+nnoremap <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " }}}
