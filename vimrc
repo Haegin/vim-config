@@ -32,6 +32,7 @@ Bundle 'tpope/vim-dispatch'
 
 " other authors {{{
 Bundle 'chriskempson/base16-vim'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
@@ -104,8 +105,9 @@ let NERDTreeDirArrows = 1
 
 " Configure colour scheme {{{
 set background=dark
-let base16colorspace=256 " must be before colorscheme declaration
-colorscheme base16-solarized
+colorscheme solarized
+"let base16colorspace=256 " must be before colorscheme declaration
+"colorscheme base16-solarized
 " }}}
 
 " Space errors settings {{{
@@ -139,6 +141,7 @@ set splitbelow
 set splitright
 set virtualedit=block
 set hlsearch
+set ignorecase
 set smartcase
 " }}}
 
