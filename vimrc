@@ -56,6 +56,8 @@ syntax on
 
 """" Configuration of plugins
 
+set wildignore+=*.png,*.jpg,*.svg,*.wof,*.zip,*.exe
+
 " Airline /  Status bar {{{
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'molokai'
@@ -68,12 +70,12 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 10000
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\.git$\|\.hg$\|\.svn$',
-  \ 'file': '\.pyc$\|\.pyo$\|\.rbc$\|\.rbo$\|\.class$\|\.o$\|\~$\',
+  \ 'file': '\v.*\.(py(c|o)|rb(c|o)|class|o|png|jpe?g|svg)$',
   \ }
-" Multiple VCS's, don't include untracked files
+" " Multiple VCS's, don't include untracked files
 let g:ctrlp_user_command = {
   \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files'],
+    \ 1: ['.git', 'cd %s && git ls-files --exclude="*.png" --exclude="*.svg"'],
     \ 2: ['.hg', 'hg --cwd %s locate -I .'],
     \ },
     \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
@@ -105,6 +107,7 @@ let NERDTreeDirArrows = 1
 
 " Configure colour scheme {{{
 set background=dark
+let g:solarized_termcolors=256
 colorscheme solarized
 "let base16colorspace=256 " must be before colorscheme declaration
 "colorscheme base16-solarized
