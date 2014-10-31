@@ -1,6 +1,6 @@
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " Let Vundle manage Vundle (required)
@@ -15,7 +15,6 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-tbone'
@@ -33,9 +32,6 @@ Bundle 'tpope/vim-dispatch'
 " other authors {{{
 Bundle 'chriskempson/base16-vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'jeetsukumaran/vim-buffergator'
-Bundle 'kien/ctrlp.vim'
-Bundle 'rking/ag.vim'
 Bundle 'bling/vim-airline'
 Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/nerdtree'
@@ -43,10 +39,14 @@ Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mhinz/vim-signify'
 Bundle 'chrisbra/csv.vim'
-Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
 Bundle 'mamut/vim-css-hex'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neomru.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'tsukkee/unite-tag'
+Bundle 'm2mdas/unite-file-vcs'
 " }}}
 
 " End of Bundles }}}
@@ -80,6 +80,29 @@ let g:ctrlp_user_command = {
     \ },
     \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
   \ }
+" }}}
+
+" Unite {{{
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+
+" The Platinum Searcher
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_encoding = 'utf-8'
+endif
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Disable supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 " }}}
 
 " Syntastic {{{
@@ -160,11 +183,19 @@ vnoremap j gj
 vnoremap k gk
 " }}}
 
+" remap Q to something more useful than ex mode {{{
+map Q @q
+" }}}
+
 " Undo files {{{
 set undodir=~/.vim/undo
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+" }}}
+
+" Folding {{{
+set foldmethod=marker
 " }}}
 
 """" Leader config {{{
@@ -173,18 +204,23 @@ let mapleader = ','
 noremap \ ,
 
 nnoremap <leader><space> :noh<CR>
-nnoremap <leader>. :CtrlPTag<CR>
-nnoremap <leader>a :Ag 
-nnoremap <leader>b :BuffergatorToggle<CR>
+nnoremap <leader>. :Unite -no-split -start-insert tag<CR>
+nnoremap <leader>a :Unite -no-split grep:.<CR>
+nnoremap <leader>b :Unite -no-split -start-insert buffer tab file_mru directory_mru<CR>
 nnoremap <leader>d :Dispatch<CR>
 nnoremap <leader>gb :Gblame wCM<CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>m :CtrlPBufTag<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader>p :Unite -no-split -start-insert file/vcs<CR>
 nnoremap <leader>r :retab<CR>
-nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 " Clear trailing whitespace
 nnoremap <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+nnoremap <leader>ff :Unite -start-insert file_rec/async<CR>
+" }}}
+
+"""" Custom commands {{{
+command! -range HashOldToNew <line1>,<line2>s/\v:([A-z_]+)( *)\=\>/\1:\2/
+command! -range HashNewToOld <line1>,<line2>s/\v([A-z_]+):( *) /:\1\2=>\2/
 " }}}
