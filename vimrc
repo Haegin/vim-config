@@ -1,53 +1,51 @@
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-
-" Let Vundle manage Vundle (required)
-Bundle 'gmarik/vundle'
+call plug#begin('~/.vim/bundle')
 
 """" Bundles {{{
 " tpope's plugins {{{
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-tbone'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-rsi'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-sleuth'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-dispatch'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-dispatch'
 " }}}
 
 " other authors {{{
-Bundle 'chriskempson/base16-vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'bling/vim-airline'
-Bundle 'sjl/gundo.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mhinz/vim-signify'
-Bundle 'chrisbra/csv.vim'
-Bundle 'ervandew/supertab'
-Bundle 'mamut/vim-css-hex'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neomru.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'tsukkee/unite-tag'
-Bundle 'm2mdas/unite-file-vcs'
+Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'sjl/gundo.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/syntastic'
+Plug 'kchmck/vim-coffee-script'
+Plug 'mhinz/vim-signify'
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+Plug 'ervandew/supertab'
+Plug 'mamut/vim-css-hex'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'tsukkee/unite-tag'
+Plug 'm2mdas/unite-file-vcs'
 " }}}
+
+call plug#end()
 
 " End of Bundles }}}
 
