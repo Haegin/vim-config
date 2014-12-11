@@ -40,6 +40,7 @@ Plug 'mamut/vim-css-hex'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
+Plug 'hwartig/vim-seeing-is-believing'
 " }}}
 
 call plug#end()
@@ -58,22 +59,21 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'molokai'
 " }}}
 
+" Ag {{{
+let g:agprg="pt --nogroup"
+let g:agformat="%f:%l:%m"
+" }}}
+
 " Ctrl P {{{
-let g:ctrlp_map = '<c-t>'
-let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_by_filename = 1
-let g:ctrlp_max_files = 10000
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '\.git$\|\.hg$\|\.svn$',
-  \ 'file': '\v.*\.(py(c|o)|rb(c|o)|class|o|png|jpe?g|svg)$',
-  \ }
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30'
 " " Multiple VCS's, don't include untracked files
 let g:ctrlp_user_command = {
   \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files --exclude="*.png" --exclude="*.svg"'],
+    \ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard | grep -v vendor/'],
     \ 2: ['.hg', 'hg --cwd %s locate -I .'],
     \ },
-    \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+    \ 'fallback': "find %s -type f -not -name '.*' -not -path '*.git/*' -not -path '*tmp/*' -not -path '*log/*' -print"
   \ }
 " }}}
 
@@ -83,18 +83,7 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_check_on_open=1
 " }}}
 
-" Buffergator settings {{{
-" don't make the window wider. it's my window. I choose the size of it!
-let g:buffergator_autoexpand_on_split = 0
-" the buffer explorer appears on the right
-let g:buffergator_viewport_split_policy = "r"
-" }}}
-
 " NERDTree Settings {{{
-let g:treeExplVertical = 1
-let g:treeExplDirSort = 1
-let g:treeExplWinSize = 33
-let NERDTreeShowBookmarks = 1
 let NERDTreeWinPos = 'right'
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -183,4 +172,13 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 " Clear trailing whitespace
 nnoremap <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nmap <leader>xm <Plug>(seeing-is-believing-mark)
+nmap <leader>xr <Plug>(seeing-is-believing-run)
+" }}}
+
+"""" Custom commands {{{
+command! -range HashOldToNew <line1>,<line2>s/\v:([A-z_]+) ( *)\=\>/\1:\2/g
+command! -range HashNewToOld <line1>,<line2>s/\v([A-z_]+):( *) /:\1 \2=> /g
+
+command! -range ReplaceQuotes <line1>,<line2>s/\v'([^']+)'/"\1"/g
 " }}}
