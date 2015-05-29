@@ -4,43 +4,55 @@ call plug#begin('~/.vim/bundle')
 
 """" Bundles {{{
 " tpope's plugins {{{
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-tbone'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-cucumber'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-cucumber'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-unimpaired'
 " }}}
 
 " other authors {{{
-Plug 'chriskempson/base16-vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
-Plug 'sjl/gundo.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
-Plug 'kchmck/vim-coffee-script'
-Plug 'mhinz/vim-signify'
+Plug 'edkolev/tmuxline.vim'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
-Plug 'ervandew/supertab'
-Plug 'mamut/vim-css-hex'
+Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'kien/ctrlp.vim'
-Plug 'rking/ag.vim'
+Plug 'ervandew/supertab'
 Plug 'hwartig/vim-seeing-is-believing'
+Plug 'kien/ctrlp.vim'
+Plug 'mamut/vim-css-hex'
+Plug 'mhinz/vim-signify'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeFind' }
+Plug 'sjl/gundo.vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script'
+Plug 'mtscout6/vim-cjsx'
+Plug 'mxw/vim-jsx'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'wellle/targets.vim'
+Plug 'godlygeek/tabular'
+" }}}
+
+" colorschemes {{{
+Plug 'vim-scripts/candy.vim'
+Plug 'vim-scripts/molokai'
 " }}}
 
 call plug#end()
@@ -50,13 +62,22 @@ call plug#end()
 filetype plugin indent on
 syntax on
 
+" Undo files and swapfiles {{{
+if has('persistent_undo')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+  set noswapfile
+endif
+" }}}
+
 """" Configuration of plugins
 
 set wildignore+=*.png,*.jpg,*.svg,*.wof,*.zip,*.exe
 
 " Airline /  Status bar {{{
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'badwolf'
 " }}}
 
 " Ag {{{
@@ -77,12 +98,6 @@ let g:ctrlp_user_command = {
   \ }
 " }}}
 
-" Syntastic {{{
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_check_on_open=1
-" }}}
-
 " NERDTree Settings {{{
 let NERDTreeWinPos = 'right'
 let NERDTreeMinimalUI = 1
@@ -92,8 +107,8 @@ let NERDTreeDirArrows = 1
 " Configure colour scheme {{{
 set background=dark
 let g:solarized_termcolors=256
+" let base16colorspace=256 " must be before colorscheme declaration
 colorscheme solarized
-"let base16colorspace=256 " must be before colorscheme declaration
 "colorscheme base16-solarized
 " }}}
 
@@ -116,7 +131,7 @@ let use_xhtml = 1
 " General stuff {{{
 set wrap
 set textwidth=79
-set colorcolumn=80,120
+set colorcolumn=80,110
 set nu
 set wildmenu
 set wildmode=list:longest
@@ -174,11 +189,12 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nmap <leader>xm <Plug>(seeing-is-believing-mark)
 nmap <leader>xr <Plug>(seeing-is-believing-run)
+nnoremap <F2> :set paste!<CR>
 " }}}
 
 """" Custom commands {{{
-command! -range HashOldToNew <line1>,<line2>s/\v:([A-z_]+) ( *)\=\>/\1:\2/g
-command! -range HashNewToOld <line1>,<line2>s/\v([A-z_]+):( *) /:\1 \2=> /g
+command! -range HashOldToNew <line1>,<line2>s/\v:([A-z_?]+) ( *)\=\>/\1:\2/g
+command! -range HashNewToOld <line1>,<line2>s/\v([A-z_?]+):( *) /:\1 \2=> /g
 
 command! -range ReplaceQuotes <line1>,<line2>s/\v'([^']+)'/"\1"/g
 " }}}
