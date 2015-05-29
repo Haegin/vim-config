@@ -1,1 +1,1 @@
-autocmd FileType ruby let b:dispatch = 'spring test %'
+autocmd FileType ruby let b:dispatch = 'spring rspec %'
