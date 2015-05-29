@@ -17,6 +17,9 @@ for item in *~(bin|README); do
   fi
 done
 
+echo "Linking ~/.nvim to ~/.vim"
+ln -s "${HOME}/.vim" "${HOME}/.nvim"
+
 echo "Installing the Vundled plugins"
 vim +BundleInstall +qall
 
