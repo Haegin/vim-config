@@ -10,17 +10,24 @@ git submodule update --init
 
 # Only want to symlink the files, not the utility scripts
 echo "Linking files into ${HOME} from ${DOTDIR}:"
-for item in *~(bin|README); do
+for item in *~(bin|config|README); do
+  if [ ! -e "${HOME}/.${item}" ]; then
+    echo "- .${item}"
+    ln -s "${DOTDIR}/${item}" "${HOME}/.${item}"
+  fi
+done
+echo "Linking files into ${HOME}/.config from ${DOTDIR}/config:"
+for item in config/*; do
   if [ ! -e "${HOME}/.${item}" ]; then
     echo "- .${item}"
     ln -s "${DOTDIR}/${item}" "${HOME}/.${item}"
   fi
 done
 
-echo "Linking ~/.nvim to ~/.vim"
-ln -s "${HOME}/.vim" "${HOME}/.nvim"
+echo "Linking ~/.config/nvim to ~/.vim"
+ln -s "${HOME}/.config/nvim" "${HOME}/.nvim"
 
-echo "Installing the Vundled plugins"
-vim +BundleInstall +qall
+#echo "Installing plugins"
+#vim +PlugInstall +qall
 
 echo "\nFinished!"

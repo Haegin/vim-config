@@ -1,6 +1,6 @@
 filetype off
 
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.config/nvim/bundle')
 
 """" Bundles {{{
 " tpope's plugins {{{
@@ -38,20 +38,27 @@ Plug 'mamut/vim-css-hex'
 Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeFind' }
 Plug 'simnalamburt/vim-mundo'
-Plug 'vim-ruby/vim-ruby'
-Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
-Plug 'mtscout6/vim-cjsx'
-Plug 'mxw/vim-jsx'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'tsukkee/unite-tag'
 Plug 'm2mdas/unite-file-vcs'
 Plug 'bronson/vim-visual-star-search'
-Plug 'majutsushi/tagbar'
 Plug 'benmills/vimux'
 Plug 'skalnik/vim-vroom'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'kien/ctrlp.vim'
+" }}}
+
+" Syntax highlighting {{{
+Plug 'rodjek/vim-puppet'
+Plug 'vim-ruby/vim-ruby'
+Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script'
+Plug 'mtscout6/vim-cjsx'
+Plug 'mxw/vim-jsx'
+Plug 'wellbredgrapefruit/tomdoc.vim'
 " }}}
 
 " neovim specific plugins {{{
@@ -72,14 +79,17 @@ filetype plugin indent on
 syntax on
 
 " Undo files and swapfiles {{{
-silent !mkdir ~/.vim/backups > /dev/null 2>&1
-set undodir=~/.vim/backups
+silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
+set undodir=~/.config/nvim/backups
 set undofile
 set noswapfile
 " }}}
 
-" Syntax checking {{{
+" Syntax {{{
+" Check syntax on save
 autocmd BufWritePost * :Neomake
+" Highlight es6 files as JS files
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 " }}}
 
 """" Configuration of plugins
@@ -89,6 +99,22 @@ set wildignore+=*.png,*.jpg,*.svg,*.wof,*.zip,*.exe
 " Airline /  Status bar {{{
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
+" }}}
+
+" CtrlP {{{
+let g:ctrlp_custom_ignore = 'node_modules'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --files-with-matches
+    \ --ignore .git
+    \ --ignore .svn
+    \ --ignore .hg
+    \ --ignore .DS_Store
+    \ -g ""'
+  let g:ctrlp_show_hidden = 1
+  let g:ctrlp_dotfiles = 1
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+endif
 " }}}
 
 " Neomake {{{
@@ -183,7 +209,7 @@ vnoremap k gk
 map Q @q
 
 " Undo files {{{
-set undodir=~/.vim/undo
+set undodir=~/.config/nvim/undo
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
@@ -210,7 +236,8 @@ nnoremap <leader>d :VroomRunTestFile<CR>
 nnoremap <leader>gb :Gblame wCM<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>p :Unite -no-split -start-insert file/vcs<CR>
+" nnoremap <leader>p :Unite -no-split -start-insert file/vcs<CR>
+nnoremap <leader>p :CtrlP<CR>
 nnoremap <leader>f :Unite -no-split -start-insert file_rec/async<CR>
 nnoremap <leader>r :retab<CR>
 nnoremap <leader>t :TagbarToggle<CR>

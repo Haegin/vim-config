@@ -1,3 +1,8 @@
 .netrwhist
 *.sw[a-z]
+vim/backup
 vim/bundle
+vim/undo
+config/nvim/backup
+config/nvim/bundle
+config/nvim/undo
