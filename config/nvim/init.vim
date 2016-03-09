@@ -5,71 +5,79 @@ call plug#begin('~/.config/nvim/bundle')
 """" Bundles {{{
 " tpope's plugins {{{
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-bundler'
+" Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-cucumber'
 " Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+" Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-tbone'
+" Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-cucumber', { 'for': 'cucumber' }
 " }}}
 
 " other authors {{{
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'chrisbra/csv.vim', { 'for': 'csv' }
-Plug 'chriskempson/base16-vim'
+" Plug 'edkolev/tmuxline.vim'
+" Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plug 'hwartig/vim-seeing-is-believing'
-Plug 'mamut/vim-css-hex'
-Plug 'mhinz/vim-signify'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh', 'on': [] }
+" Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeFind' }
-Plug 'simnalamburt/vim-mundo'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'tsukkee/unite-tag'
-Plug 'm2mdas/unite-file-vcs'
+Plug 'simnalamburt/vim-mundo', { 'on': 'GundoToggle' }
+" Plug 'Shougo/unite.vim'
+" Plug 'Shougo/neomru.vim'
+" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" Plug 'tsukkee/unite-tag'
+" Plug 'm2mdas/unite-file-vcs'
 Plug 'bronson/vim-visual-star-search'
 Plug 'benmills/vimux'
 Plug 'skalnik/vim-vroom'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'kien/ctrlp.vim'
+Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+" Plug 'kien/ctrlp.vim', { 'on': ['CtrlP', 'CtrlPBuffer', 'CtrlPMixed'] }
+Plug 'wellle/targets.vim'
 " }}}
 
 " Syntax highlighting {{{
 Plug 'rodjek/vim-puppet'
-Plug 'vim-ruby/vim-ruby'
-Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'mtscout6/vim-cjsx'
 Plug 'mxw/vim-jsx'
-Plug 'wellbredgrapefruit/tomdoc.vim'
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " }}}
 
 " neovim specific plugins {{{
 Plug 'floobits/floobits-neovim'
-Plug 'benekastah/neomake'
+Plug 'benekastah/neomake', { 'on': 'Neomake' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " }}}
 
 " colorschemes {{{
-Plug 'vim-scripts/candy.vim'
-Plug 'vim-scripts/molokai'
+" Plug 'vim-scripts/candy.vim'
+" Plug 'vim-scripts/molokai'
 " }}}
+
+" " Deferred loading {{{
+" augroup load_plugins_on_insert_mode
+"   autocmd!
+"   autocmd InsertEnter * call plug#load('YouCompleteMe')
+"                      \| call youcompleteme#Enable() | autocmd! load_plugins_on_insert_mode
+" augroup END
+" " }}}
 
 call plug#end()
 
@@ -83,6 +91,14 @@ silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
 set undodir=~/.config/nvim/backups
 set undofile
 set noswapfile
+" }}}
+
+" Indenting {{{
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set smartindent
+set cindent
 " }}}
 
 " Syntax {{{
@@ -121,28 +137,28 @@ endif
 let g:neomake_ruby_enabled_makers = ['mri']
 " }}}
 
-" Unite {{{
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
+" " Unite {{{
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#sorter_default#use(['sorter_rank'])
 
-" The Platinum Searcher
-if executable('pt')
-  let g:unite_source_grep_command = 'pt'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
-  let g:unite_source_grep_recursive_opt = ''
-  let g:unite_source_grep_encoding = 'utf-8'
-endif
+" " The Platinum Searcher
+" if executable('pt')
+"   let g:unite_source_grep_command = 'pt'
+"   let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+"   let g:unite_source_grep_recursive_opt = ''
+"   let g:unite_source_grep_encoding = 'utf-8'
+" endif
 
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Disable supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
-" }}}
+" " Custom mappings for the unite buffer
+" autocmd FileType unite call s:unite_settings()
+" function! s:unite_settings()
+"   " Disable supertab
+"   let b:SuperTabDisabled=1
+"   " Enable navigation with control-j and control-k in insert mode
+"   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+"   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+" endfunction
+" " }}}
 
 " NERDTree Settings {{{
 let NERDTreeWinPos = 'right'
@@ -227,26 +243,18 @@ let mapleader = ','
 noremap \ ,
 
 nnoremap <leader><space> :noh<CR>
-nnoremap <leader>. :Unite -no-split -start-insert tag<CR>
-nnoremap <leader>a :Unite -no-split grep:.<CR>
-nnoremap <leader>b :Unite -no-split -start-insert buffer tab file_mru directory_mru<CR>
-nnoremap <leader>ccb :%s/binding.pry/# binding.pry/<CR>
-nnoremap <leader>cub :%s/# binding.pry/binding.pry/<CR>
+" nnoremap <leader>. :Unite -no-split -start-insert tag<CR>
+" nnoremap <leader>a :Unite -no-split grep:.<CR>
+" nnoremap <leader>b :Unite -no-split -start-insert buffer tab file_mru directory_mru<CR>
+nnoremap <leader>b :History<CR>
 nnoremap <leader>d :VroomRunTestFile<CR>
 nnoremap <leader>gb :Gblame wCM<CR>
+nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>n :NERDTreeToggle<CR>
 " nnoremap <leader>p :Unite -no-split -start-insert file/vcs<CR>
-nnoremap <leader>p :CtrlP<CR>
-nnoremap <leader>f :Unite -no-split -start-insert file_rec/async<CR>
-nnoremap <leader>r :retab<CR>
-nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>p :Files<CR>
+" nnoremap <leader>f :Unite -no-split -start-insert file_rec/async<CR>
 nnoremap <leader>u :GundoToggle<CR>
-" Clear trailing whitespace
-nnoremap <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-nmap <leader>xm <Plug>(seeing-is-believing-mark)
-nmap <leader>xr <Plug>(seeing-is-believing-run)
-nnoremap <F2> :set paste!<CR>
 " }}}
 
 """" Custom commands {{{
@@ -254,4 +262,7 @@ command! -range HashOldToNew <line1>,<line2>s/\v:([A-z_?]+) ( *)\=\>/\1:\2/g
 command! -range HashNewToOld <line1>,<line2>s/\v([A-z_?]+):( *) /:\1 \2=> /g
 
 command! -range ReplaceQuotes <line1>,<line2>s/\v'([^']+)'/"\1"/g
+
+command! RspecLet norm bilet(:elcf=) {A }
+command! RspecSubject norm bisubject(:elcf=) {A }
 " }}}
