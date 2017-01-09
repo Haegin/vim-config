@@ -7,3 +7,6 @@ else
   colorscheme base16-tomorrow
 endif
 " }}}
+
+" 24 bit colour support!
+set termguicolors

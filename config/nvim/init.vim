@@ -8,3 +8,4 @@ source $HOME/.config/nvim/config/plugin-config.vim
 source $HOME/.config/nvim/config/completion.vim
 source $HOME/.config/nvim/config/commands.vim
 source $HOME/.config/nvim/config/rails-projections.vim
+source $HOME/.config/nvim/config/python.vim
