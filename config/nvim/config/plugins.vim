@@ -28,14 +28,14 @@ Plug 'tpope/vim-speeddating'
 
 " neovim specific plugins {{{
 Plug 'benekastah/neomake'
+Plug 'benjie/neomake-local-eslint.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " }}}
 
 " other authors {{{
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeFind' }
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
