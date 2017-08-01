@@ -6,7 +6,7 @@ set smartindent
 set cindent
 " }}}
 
-set wildignore+=*.png,*.jpg,*.svg,*.wof,*.zip,*.exe
+set wildignore+=*/.git/*,*.png,*.jpg,*.svg,*.wof,*.zip,*.exe
 
 " Space errors settings {{{
 let python_space_errors = 1
@@ -27,7 +27,7 @@ let use_xhtml = 1
 " General stuff {{{
 set wrap
 set textwidth=79
-set colorcolumn=80,110
+set colorcolumn=80,100,115
 set nu
 set wildmenu
 set wildmode=list:longest
@@ -41,6 +41,8 @@ set virtualedit=block
 set hlsearch
 set ignorecase
 set smartcase
+set previewheight=40 " Used for fugitive status windows among other things
+set grepprg=rg\ --vimgrep
 " }}}
 
 " Undo files {{{
