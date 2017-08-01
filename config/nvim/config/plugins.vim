@@ -34,6 +34,19 @@ Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " }}}
 
+" Completion (incl. sources) {{{
+" Taken from https://gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
+Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mhartington/nvim-typescript'
+Plug 'Shougo/neco-vim', { 'for': ['vim'] }
+Plug 'wellle/tmux-complete.vim'
+" }}}
+
 " other authors {{{
 Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -46,13 +59,8 @@ Plug 'wellle/targets.vim'
 Plug 'avdgaag/vim-phoenix'
 " Plug 'lifepillar/vim-mucomplete'
 Plug 'jbranchaud/vim-bdubs'
-" Taken from https://gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
-Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'Shougo/neopairs.vim'
+Plug 'jiangmiao/auto-pairs'
 " }}}
 
 " Syntax highlighting {{{
@@ -68,6 +76,7 @@ Plug 'slashmili/alchemist.vim'
 Plug 'berdandy/ansiesc.vim'
 " Plug 'sheerun/vim-polyglot'
 Plug 'keith/rspec.vim', { 'for': 'ruby' }
+Plug 'HerringtonDarkholme/yats.vim'
 " }}}
 
 " colorschemes {{{
