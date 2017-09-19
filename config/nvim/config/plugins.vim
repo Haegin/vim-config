@@ -20,7 +20,7 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-cucumber', { 'for': 'cucumber' }
-Plug 'tpope/vim-projectionist'
+" Plug 'tpope/vim-projectionist'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-speeddating'
@@ -63,7 +63,7 @@ Plug 'Shougo/neopairs.vim'
 Plug 'jiangmiao/auto-pairs'
 " }}}
 
-" Syntax highlighting {{{
+" Syntax highlighting and code formatting {{{
 Plug 'rodjek/vim-puppet'
 " Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
