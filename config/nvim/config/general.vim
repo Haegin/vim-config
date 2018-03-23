@@ -1,3 +1,14 @@
+" Arrow keys are for the weak {{{
+map <up> iisuckatvi
+map <down> iisuckatvi
+map <left> iisuckatvi
+map <right> iisuckatvi
+imap <up> isuckatvi
+imap <down> isuckatvi
+imap <left> isuckatvi
+imap <right> isuckatvi
+" }}}
+
 " Indenting {{{
 set shiftwidth=2
 set softtabstop=2
@@ -43,6 +54,7 @@ set ignorecase
 set smartcase
 set previewheight=40 " Used for fugitive status windows among other things
 set grepprg=rg\ --vimgrep
+set keywordprg=:Dash
 " }}}
 
 " Undo files {{{

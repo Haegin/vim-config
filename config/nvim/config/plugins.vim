@@ -28,7 +28,6 @@ Plug 'tpope/vim-speeddating'
 
 " neovim specific plugins {{{
 Plug 'benekastah/neomake'
-Plug 'benjie/neomake-local-eslint.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -45,38 +44,36 @@ Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mhartington/nvim-typescript'
 Plug 'Shougo/neco-vim', { 'for': ['vim'] }
 Plug 'wellle/tmux-complete.vim'
+Plug 'rizzatti/dash.vim'
 " }}}
 
 " other authors {{{
-Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeFind' }
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'bronson/vim-visual-star-search'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'wellle/targets.vim'
 Plug 'avdgaag/vim-phoenix'
-" Plug 'lifepillar/vim-mucomplete'
-Plug 'jbranchaud/vim-bdubs'
-Plug 'Shougo/neopairs.vim'
+" Plug 'Shougo/neopairs.vim'
 Plug 'jiangmiao/auto-pairs'
 " }}}
 
 " Syntax highlighting and code formatting {{{
 Plug 'rodjek/vim-puppet'
-" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'mtscout6/vim-cjsx'
 Plug 'mxw/vim-jsx'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'elixir-lang/vim-elixir' ", { 'for': ['ex', 'exs', 'eex'] }
 Plug 'slashmili/alchemist.vim'
-Plug 'berdandy/ansiesc.vim'
+" Plug 'berdandy/ansiesc.vim'
 " Plug 'sheerun/vim-polyglot'
 Plug 'keith/rspec.vim', { 'for': 'ruby' }
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'sbdchd/neoformat'
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 " }}}
 
 " colorschemes {{{
