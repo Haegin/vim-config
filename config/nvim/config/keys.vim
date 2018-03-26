@@ -18,6 +18,8 @@ map Q @q
 let mapleader = ','
 noremap \ ,
 
+command! ProjectFiles call fzf#run(fzf#wrap({'source': 'git ls-files -com --exclude-standard'}))
+
 nnoremap <leader><space> :noh<CR>
 " nnoremap <leader>. :Unite -no-split -start-insert tag<CR>
 " nnoremap <leader>a :Unite -no-split grep:.<CR>
@@ -29,7 +31,8 @@ nnoremap <leader>gb :Gblame wCM<CR>
 nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>gs :Gstatus<CR>
 " nnoremap <leader>p :Unite -no-split -start-insert file/vcs<CR>
-nnoremap <leader>p :Files<CR>
+nnoremap <leader>p :ProjectFiles<CR>
+nnoremap <leader>t :Files<CR>
 " nnoremap <leader>f :Unite -no-split -start-insert file_rec/async<CR>
 nnoremap <leader>u :MundoToggle<CR>
 

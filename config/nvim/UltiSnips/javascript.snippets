@@ -1,0 +1,234 @@
+snippet aphro "Import Aphrodite"
+import { StyleSheet, css } from 'aphrodite/no-important';
+
+const styles = StyleSheet.create({
+  $0,
+});
+endsnippet
+
+snippet reactcomp "React component"
+import React, { Component, PropTypes } from 'react';
+
+class ${1:component} extends Component {
+  ${2:features}
+
+  constructor(props) {
+    super(props);
+    `!p
+if "state" in t[2].split(' '):
+  snip >> 2
+  snip.rv = "this.state = {"
+  snip += "};"
+`
+  }
+    `!p
+if "cwm" in t[2].split(' '):
+  snip >> 1
+  snip.rv = "componentWillMount() {"
+  snip += "};"
+``!p
+if "cdm" in t[2].split(' '):
+  snip >> 1
+  snip.rv = "componentDidMount() {"
+  snip += "};"
+`
+
+  render() {
+    const {${3:props}} = this.props;
+    return (
+      $0
+    );
+  }
+}
+
+`!p
+props = re.sub(r'\s', '', t[3]).split(',')
+snip.rv = "{0}.propTypes = {{".format(t[1])
+snip >> 1
+for prop in props:
+  snip += "{0}: PropTypes.?,".format(prop)
+snip << 1
+snip += "};"
+`
+
+`!p
+props = re.sub(r'[]\s', '', t[3]).split(',')
+snip.rv = "{0}.defaultProps = {{".format(t[1])
+snip >> 1
+for prop in props:
+  snip += "{0}: undefined,".format(prop)
+snip << 1
+snip += "};"
+`
+
+export default $1;
+endsnippet
+
+snippet contcomp "React container component"
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+
+class ${1:component} extends Component {
+  ${2:features}
+
+  constructor(props) {
+    super(props);
+    `!p
+if "state" in t[2].split(' '):
+  snip >> 2
+  snip.rv = "this.state = {"
+  snip += "};"
+`
+  };
+
+  render() {
+    {${3:props}} = this.props;
+    return (
+      $0
+    );
+  }
+};
+
+`!p
+props = re.sub(r'\s', '', t[3]).split(',')
+snip += "{0}.propTypes = {{".format(t[1])
+snip >> 1
+for prop in props:
+  snip += "{0}: PropTypes.?,".format(prop)
+snip << 1
+snip += "};"
+`
+
+`!p
+props = re.sub(r'\s', '', t[3]).split(',')
+snip += "{0}.defaultProps = {{".format(t[1])
+snip >> 1
+for prop in props:
+  snip += "{0}: undefined,".format(prop)
+snip << 1
+snip += "};"
+`
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ${4:state}
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    ${5:dispatch}
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)($1);
+endsnippet
+
+snippet testcomp "Test a React component"
+import React from 'react';
+import { shallow } from 'enzyme';
+import jasmineEnzyme from 'jasmine-enzyme';
+
+import ${1:component} from '../../../app/components/${2:path}/$1';
+
+describe('$1', () => {
+  beforeEach(() => { jasmineEnzyme(); });
+
+  it('${3:description}', () => {
+    $0
+  });
+});
+endsnippet
+
+snippet testcont "Test a React container"
+import React from 'react';
+import { shallow } from 'enzyme';
+import jasmineEnzyme from 'jasmine-enzyme';
+
+import ${1:container} from '../../../app/containers/${2:path}/$1';
+
+describe('$1', () => {
+  beforeEach(() => { jasmineEnzyme(); });
+
+  it('${3:description}', () => {
+    $0
+  });
+});
+endsnippet
+
+snippet funccomp "React functional component"
+import React, { PropTypes } from 'react';
+
+const ${1:component} = ({${2:props}}) => (
+  $0;
+);
+
+`!p
+props = re.sub(r'\s', '', t[2]).split(',')
+snip += "{0}.propTypes = {{".format(t[1])
+snip >> 1
+for prop in props:
+  snip += "{0}: PropTypes.?,".format(prop)
+snip << 1
+snip += "};"
+`
+
+`!p
+props = re.sub(r'\s', '', t[2]).split(',')
+snip += "{0}.defaultProps = {{".format(t[1])
+snip >> 1
+for prop in props:
+  snip += "{0}: undefined,".format(prop)
+snip << 1
+snip += "};"
+`
+
+export default $1;
+endsnippet
+
+snippet imp "import" b
+import `!p
+def formatVariableName(path):
+  lastPart = path.split('/')[-1]
+  if lastPart == 'lodash':
+    return '_'
+  elif lastPart == 'jquery':
+    return '$'
+  else:
+    return lastPart
+snip.rv = formatVariableName(t[1])
+` from '${1}';$0
+endsnippet
+
+snippet ptr "PropTypes..isRequired"
+$2: PropTypes.$1.isRequired,
+endsnippet
+
+snippet ptar "PropTypes.array.isRequired"
+$1: PropTypes.arrayOf($2).isRequired,
+endsnippet
+
+snippet ptbr "PropTypes.bool.isRequired"
+$1: PropTypes.bool.isRequired,
+endsnippet
+
+snippet ptnr "PropTypes.number.isRequired"
+$1: PropTypes.number.isRequired,
+endsnippet
+
+snippet ptfr "PropTypes.func.isRequired"
+$1: PropTypes.func.isRequired,
+endsnippet
+
+snippet ptsr "PropTypes.object.isRequired"
+$1: PropTypes.shape($2).isRequired,
+endsnippet
+
+snippet ptsr "PropTypes.string.isRequired"
+$1: PropTypes.string.isRequired,
+endsnippet
+
+snippet pter "PropTypes.element.isRequired"
+$1: PropTypes.element.isRequired,
+endsnippet
+
