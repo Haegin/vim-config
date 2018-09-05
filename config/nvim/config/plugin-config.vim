@@ -48,3 +48,9 @@ let g:neoformat_try_formatprg = 1
 let g:splitjoin_trailing_comma = 1
 let g:splitjoin_ruby_hanging_args = 0
 " }}}
+
+" {{{ Prettier
+" Run on save, even without an @format tag
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue Prettier
+" }}}

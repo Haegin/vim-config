@@ -20,10 +20,12 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-cucumber', { 'for': 'cucumber' }
-" Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-projectionist'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-speeddating'
+" Plug 'tpope/vim-dotenv'
+Plug 'tpope/vim-dadbod'
 " }}}
 
 " neovim specific plugins {{{
@@ -74,6 +76,11 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'sbdchd/neoformat'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
+Plug 'jparise/vim-graphql'
+Plug 'fatih/vim-go'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 " }}}
 
 " colorschemes {{{
