@@ -17,21 +17,23 @@ augroup omnifuncs
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   autocmd FileType elixir setlocal omnifunc=elixircomplete#Complete
   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+  " autocmd FileType typescript,tsx setlocal omnifunc=
 augroup end
 " }}}
 
 " Deoplete{{{
 let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni'
-\]
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs', 'buffer']
+" if !exists('g:deoplete#omni#input_patterns')
+"   let g:deoplete#omni#input_patterns = {}
+" endif
+" let g:deoplete#omni#functions = {}
+" let g:deoplete#omni#functions.javascript = [
+"   \ 'tern#Complete',
+"   \ 'jspc#omni'
+" \]
+" let g:deoplete#sources = {}
+" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs', 'buffer', 'tag']
+" let g:deoplete#sources['_'] = ['buffer', 'tag']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif

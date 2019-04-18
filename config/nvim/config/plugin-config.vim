@@ -4,7 +4,7 @@
 
 " Status bar {{{
 let g:lightline = {
-  \ 'colorscheme': 'Dracula',
+  \ 'colorscheme': 'darcula',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -36,11 +36,11 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 
 " NeoFormat {{{
 let g:neoformat_try_formatprg = 1
-" augroup NeoformatAutoFormat
-"   autocmd!
+augroup NeoformatAutoFormat
+  autocmd!
 "   autocmd FileType javascript,javascript.jsx setlocal formatprg="prettier --stdin"
-"   autocmd BufWritePre *.js,*.jsx Neoformat
-" augroup END
+  autocmd BufWritePre *.ex,*.exs Neoformat
+augroup END
 " let g:neoformat_enabled_javascript = ['prettier-eslint']
 " }}}
 
@@ -54,3 +54,14 @@ let g:splitjoin_ruby_hanging_args = 0
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue Prettier
 " }}}
+
+
+" {{{ Language Server
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['typescript-language-server', '--stdio'],
+    \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
+    \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
+    \ }
+" }}}
+"

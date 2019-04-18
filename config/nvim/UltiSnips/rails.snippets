@@ -1,0 +1,53 @@
+snippet model "Create a new model"
+# frozen_string_literal: true
+
+class ${1:name} < ${2:ApplicationRecord}
+  ${0}
+end
+endsnippet
+
+snippet factory "Create a new factory"
+# frozen_string_literal: true
+
+FactoryBot.define do
+  factory :`!p
+snip.rv = re.sub('([a-z0-9])([A-Z])', r'\1_\2', re.sub('(.)([A-Z][a-z]+)', r'\1_\2', t[1])).lower()
+`, class: ${1} do
+    ${0}
+  end
+end
+endsnippet
+
+snippet testmodel "Test a model"
+# frozen_string_literal: true
+
+require "rails_helper"
+
+describe ${1}, type: :model do
+  subject { build(:`!p
+snip.rv = re.sub('([a-z0-9])([A-Z])', r'\1_\2', re.sub('(.)([A-Z][a-z]+)', r'\1_\2', t[1])).lower()
+`) }
+
+  it { is_expected.to be_valid }
+  end
+end
+endsnippet
+
+snippet gqltype "A GraphQL Type"
+# frozen_string_literal: true
+
+$1Type = GraphQL::ObjectType.define do
+  name "${1}"
+  description "${2}"
+
+  field :${3:id}, ${5:!}types.${4:ID}
+end
+endsnippet
+
+snippet gqlconn "A GraphQL connection type field"
+connection :`!p
+snip.rv = re.sub('([a-z0-9])([A-Z])', r'\1_\2', re.sub('(.)([A-Z][a-z]+)', r'\1_\2', t[1])).lower()
+` do
+  type ${1}Type.connection_type
+end
+endsnippet

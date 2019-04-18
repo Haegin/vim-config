@@ -33,6 +33,8 @@ Plug 'benekastah/neomake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/echodoc.vim'
 " }}}
 
 " Completion (incl. sources) {{{
@@ -43,10 +45,16 @@ Plug 'honza/vim-snippets'
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'mhartington/nvim-typescript'
+Plug 'mhartington/nvim-typescript', {  'for': ['typescript', 'typescript.tsx', 'tsx'], 'do': './install.sh' }
 Plug 'Shougo/neco-vim', { 'for': ['vim'] }
 Plug 'wellle/tmux-complete.vim'
 Plug 'rizzatti/dash.vim'
+Plug 'Shougo/neco-syntax'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'takkii/Bignyanco'
 " }}}
 
 " other authors {{{
@@ -64,7 +72,8 @@ Plug 'jiangmiao/auto-pairs'
 " Syntax highlighting and code formatting {{{
 Plug 'rodjek/vim-puppet'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'elixir-lang/vim-elixir' ", { 'for': ['ex', 'exs', 'eex'] }

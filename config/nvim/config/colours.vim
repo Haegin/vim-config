@@ -4,7 +4,7 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 else
   set background=dark
-  colorscheme base16-tomorrow
+  colorscheme base16-railscasts
 endif
 " }}}
 

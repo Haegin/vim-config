@@ -64,15 +64,34 @@ function! SL(function)
   endif
 endfunction
 
+
 " First section
-hi User1 guibg=#ebff87 guifg=#282936
+execute "hi User1 guibg=" . g:terminal_color_6 . " guifg=" . g:terminal_color_0
 " First divider
-hi User2 guibg=#00f769 guifg=#ebff87
-hi User3 guibg=#00f769 guifg=#282936
-hi User4 guibg=#a1efe4 guifg=#00f769
-hi User5 guibg=#a1efe4 guifg=#282936
-hi User6 guibg=#62d6e8 guifg=#a1efe4
-hi User7 guibg=#62d6e8 guifg=#282936
+execute "hi User2 guibg=" . g:terminal_color_3 . " guifg=" . g:terminal_color_6
+execute "hi User3 guibg=" . g:terminal_color_3 . " guifg=" . g:terminal_color_0
+execute "hi User4 guibg=" . g:terminal_color_4 . " guifg=" . g:terminal_color_3
+execute "hi User5 guibg=" . g:terminal_color_4 . " guifg=" . g:terminal_color_0
+execute "hi User6 guibg=" . g:terminal_color_8 . " guifg=" . g:terminal_color_4
+execute "hi User7 guibg=" . g:terminal_color_8 . " guifg=" . g:terminal_color_0
+" 2 = green, 3 = yellow, 4 = blue, 5 = purple, 6 = dark green, 7 = light grey, 8 = dark purple, 9 = red
 
 set statusline=%1*%2.3n\ %2*%3*\ %{SL('fugitive#head')}\ %4*%5*\ %<%.99f\ %6*%7*\ %h%w%m%r%=%6*%5*\ %l,%c%V\ %4*%3*\ %y\ %2*%1*\ %P
 " }}}
+
+"{{{ Tmux copy/paste
+if exists('$TMUX')
+  let g:clipboard = {
+        \   'name': 'Yank',
+        \   'copy': {
+        \      '+': 'yank',
+        \      '*': 'yank',
+        \    },
+        \   'paste': {
+        \      '+': 'tmux save-buffer -',
+        \      '*': 'tmux save-buffer -',
+        \   },
+        \   'cache_enabled': 1,
+        \ }
+endif
+"}}}
