@@ -1,5 +1,6 @@
 filetype off
 
+source $HOME/.config/nvim/config/preload.vim
 source $HOME/.config/nvim/config/plugins.vim
 source $HOME/.config/nvim/config/colours.vim
 source $HOME/.config/nvim/config/general.vim

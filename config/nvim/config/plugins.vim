@@ -29,7 +29,7 @@ Plug 'tpope/vim-dadbod'
 " }}}
 
 " neovim specific plugins {{{
-Plug 'benekastah/neomake'
+Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -82,7 +82,7 @@ Plug 'slashmili/alchemist.vim'
 " Plug 'sheerun/vim-polyglot'
 Plug 'keith/rspec.vim', { 'for': 'ruby' }
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'jparise/vim-graphql'

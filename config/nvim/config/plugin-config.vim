@@ -26,33 +26,27 @@ command! -bang -nargs=* Rg
   \   <bang>0)
 " }}}
 
-" Neomake {{{
-call neomake#configure#automake('nw', 1000)
-let g:neomake_open_list = 2
-let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
-let g:neomake_elixir_enabled_makers = ['credo']
-let g:neomake_javascript_enabled_makers = ['eslint']
-" }}}
+" " Neomake {{{
+" call neomake#configure#automake('nw', 1000)
+" let g:neomake_open_list = 2
+" let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
+" let g:neomake_elixir_enabled_makers = ['credo']
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" " }}}
 
 " NeoFormat {{{
-let g:neoformat_try_formatprg = 1
-augroup NeoformatAutoFormat
-  autocmd!
-"   autocmd FileType javascript,javascript.jsx setlocal formatprg="prettier --stdin"
-  autocmd BufWritePre *.ex,*.exs Neoformat
-augroup END
+" let g:neoformat_try_formatprg = 1
+" augroup NeoformatAutoFormat
+"   autocmd!
+" "   autocmd FileType javascript,javascript.jsx setlocal formatprg="prettier --stdin"
+"   autocmd BufWritePre *.ex,*.exs Neoformat
+" augroup END
 " let g:neoformat_enabled_javascript = ['prettier-eslint']
 " }}}
 
 " {{{ Splitjoin
 let g:splitjoin_trailing_comma = 1
 let g:splitjoin_ruby_hanging_args = 0
-" }}}
-
-" {{{ Prettier
-" Run on save, even without an @format tag
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue Prettier
 " }}}
 
 

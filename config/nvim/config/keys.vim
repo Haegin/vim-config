@@ -44,3 +44,12 @@ noremap <leader>rs :call LanguageClient#textDocument_rename(
 " Rename - ru => rename UPPERCASE
 noremap <leader>ru :call LanguageClient#textDocument_rename(
             \ {'newName': Abolish.uppercase(expand('<cword>'))})<CR>
+
+" Terminal Mode
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+  autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
+  highlight! link TermCursor Cursor
+  highlight! TermCursorNC guibg='#ffc66d' guifg=white ctermbg=1 ctermfg=15
+endif
