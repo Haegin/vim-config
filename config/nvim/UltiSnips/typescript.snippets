@@ -1,0 +1,38 @@
+snippet gqlq "Add a GraphQL query to a component"
+import gql from 'graphql-tag'
+import { compose, branch, renderComponent, mapProps } from 'recompose'
+import { ChildDataProps, graphql } from 'react-apollo'
+
+import Loading from '../../Loading'
+
+import ${3:component} from './$3'
+
+interface Props {
+  $2
+}
+
+interface Data {
+  viewer: Props
+}
+
+type ChildProps = ChildDataProps<{}, Data, {}>
+
+export const QUERY = gql\`
+  query $1 {
+    viewer {
+      $2
+    }
+  }
+\`
+
+export default compose<Props, {}>(
+  graphql<{}, Data, {}, ChildProps>(QUERY),
+  branch<ChildProps>(
+    ({data: {loading}}) => !!loading,
+    renderComponent(Loading)
+  ),
+  mapProps<Props, { data: Data }>(({data: { viewer }}) => ({
+    viewer: viewer,
+  }))
+)($3)
+endsnippet
