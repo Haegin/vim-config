@@ -35,6 +35,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " }}}
 
 " Completion (incl. sources) {{{
@@ -55,6 +56,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'takkii/Bignyanco'
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 " }}}
 
 " other authors {{{

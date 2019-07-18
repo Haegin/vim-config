@@ -21,37 +21,42 @@ augroup omnifuncs
 augroup end
 " }}}
 
-" Deoplete{{{
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('sources', {
-  \ '_': ['ale', 'buffer', 'tag']
-  \ })
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
+" " Deoplete{{{
+" let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#option('sources', {
+"   \ '_': ['ale', 'buffer', 'tag']
+"   \ })
+" " if !exists('g:deoplete#omni#input_patterns')
+" "   let g:deoplete#omni#input_patterns = {}
+" " endif
+" " let g:deoplete#omni#functions = {}
+" " let g:deoplete#omni#functions.javascript = [
+" "   \ 'tern#Complete',
+" "   \ 'jspc#omni'
+" " \]
+" " let g:deoplete#sources = {}
+" " let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs', 'buffer', 'tag']
+" " let g:deoplete#sources['_'] = ['buffer', 'tag']
+" let g:tern#command = ['tern']
+" let g:tern#arguments = ['--persistent']
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" " deoplete tab-complete, with help from supertab
+" let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabContextDefaultCompletionType = "<c-n>"
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" " }}}
+"
+" " tern {{{
+" if exists('g:plugs["tern_for_vim"]')
+"   let g:tern_show_argument_hints = 'on_hold'
+"   let g:tern_show_signature_in_pum = 1
+"   autocmd FileType javascript setlocal omnifunc=tern#Complete
 " endif
-" let g:deoplete#omni#functions = {}
-" let g:deoplete#omni#functions.javascript = [
-"   \ 'tern#Complete',
-"   \ 'jspc#omni'
-" \]
-" let g:deoplete#sources = {}
-" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs', 'buffer', 'tag']
-" let g:deoplete#sources['_'] = ['buffer', 'tag']
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" deoplete tab-complete, with help from supertab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" }}}
+" " }}}
 
-" tern {{{
-if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-" }}}
+" COC{{{
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+"}}}
