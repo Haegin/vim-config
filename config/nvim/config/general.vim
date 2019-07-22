@@ -76,7 +76,8 @@ execute "hi User6 guibg=" . g:terminal_color_8 . " guifg=" . g:terminal_color_4
 execute "hi User7 guibg=" . g:terminal_color_8 . " guifg=" . g:terminal_color_0
 " 2 = green, 3 = yellow, 4 = blue, 5 = purple, 6 = dark green, 7 = light grey, 8 = dark purple, 9 = red
 
-set statusline=%1*%2.3n\ %2*%3*\ %{SL('fugitive#head')}\ %4*%5*\ %<%.99f\ %6*%7*\ %h%w%m%r%=%6*%5*\ %l,%c%V\ %4*%3*\ %y\ %2*%1*\ %P
+" set statusline=%1*%2.3n\ %2*%3*\ %{SL('fugitive#head')}\ %4*%5*\ %<%.99f\ %6*%7*\ %h%w%m%r%=%6*%5*\ %l,%c%V\ %4*%3*\ %y\ %2*%1*\ %P
+set statusline=%1*%2.3n\ %{coc#status()}%{get(b:,'coc_current_function','')}\ %2*%3*\ %{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}\ %4*%5*\ %<%.99f\ %6*%7*\ %h%w%m%r%=%6*%5*\ %l,%c%V\ %4*%3*\ %y\ %2*%1*\ %P
 " }}}
 
 "{{{ Tmux copy/paste

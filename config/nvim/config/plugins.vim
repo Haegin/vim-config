@@ -56,7 +56,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'takkii/Bignyanco'
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 " }}}
 
 " other authors {{{
@@ -68,7 +67,7 @@ Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock', { 'for': '
 Plug 'wellle/targets.vim'
 Plug 'avdgaag/vim-phoenix'
 " Plug 'Shougo/neopairs.vim'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 " }}}
 
 " Syntax highlighting and code formatting {{{
