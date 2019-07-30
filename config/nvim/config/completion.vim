@@ -21,6 +21,10 @@ augroup omnifuncs
 augroup end
 " }}}
 
+" Tab forwards through completion entries
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
 " " Deoplete{{{
 " let g:deoplete#enable_at_startup = 1
 " call deoplete#custom#option('sources', {
@@ -41,11 +45,8 @@ augroup end
 " let g:tern#arguments = ['--persistent']
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " " deoplete tab-complete, with help from supertab
-" let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabContextDefaultCompletionType = "<c-n>"
 " let g:UltiSnipsExpandTrigger="<c-j>"
 " let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " " }}}
 "
 " " tern {{{

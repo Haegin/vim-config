@@ -14,9 +14,6 @@ vnoremap k gk
 " remap Q to something more useful than visual mode
 map Q @q
 
-" K for docs
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 """" Leader config {{{
 let mapleader = ','
 noremap \ ,
@@ -45,6 +42,7 @@ nmap <leader>as <Plug>(coc-codeaction-selected)
 vmap <leader>as <Plug>(coc-codeaction-selected)
 nmap <leader>cx <Plug>(coc-float-hide)
 nnoremap <leader>co :<C-u>CocList outline<cr>
+nmap <leader>ci :call CocAction('runCommand', 'editor.action.organizeImport')<cr>
 nmap <leader>f <Plug>(coc-fix-current)
 nmap <leader>l <Plug>(coc-codelens-action)
 " Rename - rc => rename camelCase
@@ -58,6 +56,7 @@ nmap <leader>l <Plug>(coc-codelens-action)
 "             \ {'newName': Abolish.uppercase(expand('<cword>'))})<CR>
 nnoremap <leader>y :<C-u>CocList -A --normal yank<cr>
 
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Terminal Mode
 if has('nvim')
