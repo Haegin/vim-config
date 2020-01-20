@@ -18,8 +18,6 @@ map Q @q
 let mapleader = ','
 noremap \ ,
 
-command! ProjectFiles call fzf#run(fzf#wrap({'source': 'git ls-files -co --exclude-standard'}))
-
 nnoremap <leader><space> :noh<CR>
 nnoremap <leader>b :History<CR>
 nnoremap <leader>gb :Gblame wCM<CR>
