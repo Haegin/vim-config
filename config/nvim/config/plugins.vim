@@ -73,8 +73,9 @@ Plug 'avdgaag/vim-phoenix'
 " Syntax highlighting and code formatting {{{
 Plug 'rodjek/vim-puppet'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'evanleck/vim-svelte', { 'branch': 'main' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'elixir-lang/vim-elixir' ", { 'for': ['ex', 'exs', 'eex'] }
