@@ -20,7 +20,7 @@ noremap \ ,
 
 nnoremap <leader><space> :noh<CR>
 nnoremap <leader>b :History<CR>
-nnoremap <leader>gb :Gblame wCM<CR>
+nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>d :Dispatch<CR>

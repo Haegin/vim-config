@@ -26,6 +26,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-speeddating'
 " Plug 'tpope/vim-dotenv'
 Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-rhubarb'
 " }}}
 
 " neovim specific plugins {{{
@@ -89,12 +90,15 @@ Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'jparise/vim-graphql'
 Plug 'fatih/vim-go'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'vue'] }
 " Plug 'cohama/lexima.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'hail2u/vim-css3-syntax'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'andys8/vim-elm-syntax'
+Plug 'jvirtanen/vim-hcl'
 " }}}
 
 " colorschemes {{{

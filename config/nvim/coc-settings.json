@@ -35,11 +35,18 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json",
     "graphql",
     "css",
     "Markdown"
   ],
   "yank.enableCompletion": false,
-  "typescript.suggestionActions.enabled": true
+  "typescript.suggestionActions.enabled": true,
+  "languageserver": {
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"]
+    }
+  },
+  "codeLens.enable": true
 }
