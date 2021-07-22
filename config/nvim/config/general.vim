@@ -45,6 +45,7 @@ set smartcase
 set previewheight=40 " Used for fugitive status windows among other things
 set grepprg=rg\ --vimgrep
 set keywordprg=:call\ <SID>show_documentation()
+set timeoutlen=500
 " }}}
 
 " Undo files {{{

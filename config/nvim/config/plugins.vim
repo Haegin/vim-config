@@ -9,6 +9,7 @@ Plug 'tpope/vim-dispatch'
 " Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
@@ -30,33 +31,55 @@ Plug 'tpope/vim-rhubarb'
 " }}}
 
 " neovim specific plugins {{{
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/denite.nvim'
+" Plug 'Shougo/denite.nvim'
 " Plug 'Shougo/echodoc.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor' " this provides "go to def" etc
+Plug 'RRethy/nvim-treesitter-textsubjects'
+Plug 'neovim/nvim-lspconfig'
+Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+Plug 'ray-x/navigator.lua'
+Plug 'kabouzeid/nvim-lspinstall', { 'branch': 'main' }
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim', { 'branch': 'main' }
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
+" Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+Plug 'folke/which-key.nvim', { 'branch': 'main' }
+Plug 'hoob3rt/lualine.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-writer.nvim'
+Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 " }}}
 
 " Completion (incl. sources) {{{
 " Taken from https://gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
-Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'ervandew/supertab'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 " Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
 " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 " Plug 'mhartington/nvim-typescript', {  'for': ['typescript', 'typescript.tsx', 'tsx'], 'do': './install.sh' }
 " Plug 'Shougo/neco-vim', { 'for': ['vim'] }
-Plug 'wellle/tmux-complete.vim'
-Plug 'rizzatti/dash.vim'
+" Plug 'wellle/tmux-complete.vim'
+" Plug 'rizzatti/dash.vim'
 " Plug 'Shougo/neco-syntax'
 " Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
 "     \ }
 " Plug 'takkii/Bignyanco'
+Plug 'hrsh7th/nvim-compe'
+Plug 'andersevenrud/compe-tmux', { 'branch': 'main' }
 " }}}
 
 " other authors {{{
@@ -66,7 +89,8 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'wellle/targets.vim'
-Plug 'avdgaag/vim-phoenix'
+Plug 'arthurxavierx/vim-caser'
+" Plug 'avdgaag/vim-phoenix'
 " Plug 'Shougo/neopairs.vim'
 " Plug 'jiangmiao/auto-pairs'
 " }}}
@@ -83,7 +107,7 @@ Plug 'elixir-lang/vim-elixir' ", { 'for': ['ex', 'exs', 'eex'] }
 Plug 'slashmili/alchemist.vim'
 " Plug 'berdandy/ansiesc.vim'
 " Plug 'sheerun/vim-polyglot'
-Plug 'keith/rspec.vim', { 'for': 'ruby' }
+" Plug 'keith/rspec.vim', { 'for': 'ruby' }
 Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'sbdchd/neoformat'
 Plug 'hashivim/vim-terraform'
@@ -92,17 +116,21 @@ Plug 'jparise/vim-graphql'
 Plug 'fatih/vim-go'
 " Plug 'prettier/vim-prettier', {
 "   \ 'do': 'yarn install',
-"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'vue'] }
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 " Plug 'cohama/lexima.vim'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'hail2u/vim-css3-syntax'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'andys8/vim-elm-syntax'
 Plug 'jvirtanen/vim-hcl'
+Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+Plug 'lifepillar/pgsql.vim'
 " }}}
 
 " colorschemes {{{
-Plug 'chriskempson/base16-vim'
+Plug 'sunjon/shade.nvim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+" Plug 'chriskempson/base16-vim'
 " }}}
 
 call plug#end()

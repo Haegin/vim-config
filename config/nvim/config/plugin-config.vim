@@ -2,19 +2,71 @@
 
 """" Configuration of plugins
 
+" Trouble {{{
+lua << EOF
+  require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+" }}}
+"
+lua << EOF
+  require("which-key").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
+" TreeSitter {{{
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+    textsubjects = {
+        enable = true,
+        keymaps = {
+            ['.'] = 'textsubjects-smart',
+            [';'] = 'textsubjects-container-outer',
+        }
+    },
+}
+EOF
+" }}}
+
+" Telescope {{{
+lua << EOF
+local actions = require('telescope.actions')
+-- Global remapping
+------------------------------
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+      },
+    },
+  },
+  extensions = {
+    fzf_writer = {
+      minimum_grep_characters = 2,
+      minimum_files_characters = 2,
+      use_highlighter = true,
+    }
+  }
+}
+EOF
+" }}}
+
 " Status bar {{{
-let g:lightline = {
-  \ 'colorscheme': 'darcula',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'fugitive#head'
-  \ },
-  \ 'separator': { 'left': '', 'right': '' },
-  \ 'subseparator': { 'left': '', 'right': '' }
-\ }
+lua << EOF
+require('lualine').setup {
+  options = {
+    theme = 'tokyonight'
+  }
+}
+EOF
 " }}}
 
 " FZF {{{
@@ -63,6 +115,19 @@ let g:fzf_commits_log_options = "--graph --format=format:'%C(blue)%h%C(reset) - 
 " let g:neoformat_enabled_javascript = ['prettier-eslint']
 " }}}
 
+" {{{ ALE
+" let g:ale_linters = {
+"       \ 'sql': ['sqlint'],
+"       \ }
+
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+
+let g:ale_fix_on_save = 1
+" }}}
+
 " {{{ Splitjoin
 let g:splitjoin_trailing_comma = 1
 let g:splitjoin_ruby_hanging_args = 0
@@ -78,4 +143,29 @@ let g:LanguageClient_serverCommands = {
     \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
     \ }
 " }}}
-"
+
+" {{{ Terraform
+let g:terraform_fmt_on_save = 1
+" }}}
+
+" {{{ PostgreSQL
+let g:sql_type_default = 'pgsql'
+" }}}
+
+" {{{ CoC
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+" xmap if <Plug>(coc-funcobj-i)
+" omap if <Plug>(coc-funcobj-i)
+" xmap af <Plug>(coc-funcobj-a)
+" omap af <Plug>(coc-funcobj-a)
+" xmap ic <Plug>(coc-classobj-i)
+" omap ic <Plug>(coc-classobj-i)
+" xmap ac <Plug>(coc-classobj-a)
+" omap ac <Plug>(coc-classobj-a)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
+" }}}

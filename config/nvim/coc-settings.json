@@ -11,6 +11,7 @@
   ],
   "git.realtimeGutters": true,
   "suggest.noselect": true,
+  "suggest.snippetIndicator": "✂️",
   "list.insertMappings": {
     "<C-x>": "action:split",
     "<C-v>": "action:vsplit"
@@ -20,12 +21,14 @@
     "v": "action:vsplit"
   },
   "list.source.files.command": "fd",
-  "list.source.files.args": ["--type", "f"],
+  "list.source.files.args": [
+    "--type",
+    "f"
+  ],
   "rust.clippy_preference": "on",
   "tsserver.enableJavascript": true,
   "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "typescript.preferences.noSemicolons": true,
   "typescript.preferences.quoteStyle": "single",
   "typescript.referencesCodeLens.enable": true,
   "list.source.grep.command": "rg",
@@ -48,5 +51,11 @@
       "rootPatterns": ["elm.json"]
     }
   },
-  "codeLens.enable": true
+  "suggest.timeout": 500,
+  "prettier.requireConfig": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.jsxBracketSameLine": true,
+  "prettier.onlyUseLocalVersion": true
 }
