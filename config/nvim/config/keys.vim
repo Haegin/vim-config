@@ -20,7 +20,7 @@ noremap \ ,
 
 nnoremap <leader><space> :noh<CR>
 nnoremap <leader>h <cmd>Telescope old_files<CR>
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gb :Git blame -wCM<CR>
 nnoremap <leader>gc <cmd>Telescope git_commits<CR>
 nnoremap <leader>gf <cmd>Telescope git_bcommits<CR>
 nnoremap <leader>gs <cmd>Telescope git_status<CR>
