@@ -4,6 +4,7 @@ source $HOME/.config/nvim/config/preload.vim
 source $HOME/.config/nvim/config/plugins.vim
 source $HOME/.config/nvim/config/colours.vim
 source $HOME/.config/nvim/config/general.vim
+source $HOME/.config/nvim/config/filetype.vim
 source $HOME/.config/nvim/config/keys.vim
 source $HOME/.config/nvim/config/plugin-config.vim
 source $HOME/.config/nvim/config/completion.vim

@@ -44,11 +44,10 @@ Plug 'RRethy/nvim-treesitter-textsubjects'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 Plug 'ray-x/navigator.lua'
-Plug 'kabouzeid/nvim-lspinstall', { 'branch': 'main' }
+" Plug 'kabouzeid/nvim-lspinstall', { 'branch': 'main' }
+Plug 'williamboman/nvim-lsp-installer', { 'branch': 'main' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim', { 'branch': 'main' }
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 " Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
@@ -78,8 +77,15 @@ Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 "     \ 'do': 'bash install.sh',
 "     \ }
 " Plug 'takkii/Bignyanco'
-Plug 'hrsh7th/nvim-compe'
-Plug 'andersevenrud/compe-tmux', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
+Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
+Plug 'andersevenrud/cmp-tmux', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-vsnip', { 'branch': 'main' }
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 " }}}
 
 " other authors {{{
@@ -113,13 +119,13 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'jparise/vim-graphql'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'prettier/vim-prettier', {
 "   \ 'do': 'yarn install',
 "   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 " Plug 'cohama/lexima.vim'
 " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax', { 'branch': 'main' }
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'andys8/vim-elm-syntax'
 Plug 'jvirtanen/vim-hcl'
@@ -132,6 +138,9 @@ Plug 'sunjon/shade.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Plug 'chriskempson/base16-vim'
 " }}}
+
+Plug 'github/copilot.vim', { 'branch': 'release' }
+
 
 call plug#end()
 " End of Bundles }}}

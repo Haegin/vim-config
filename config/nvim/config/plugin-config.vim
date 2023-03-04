@@ -152,6 +152,10 @@ let g:terraform_fmt_on_save = 1
 let g:sql_type_default = 'pgsql'
 " }}}
 
+" {{{ Copilot
+" Copilot enable
+" }}}
+
 " {{{ CoC
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.

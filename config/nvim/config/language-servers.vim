@@ -38,21 +38,24 @@ local on_attach = function(client, bufnr)
 
 end
 
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{
-      on_attach = on_attach
-    }
-  end
-end
+local lsp_installer = require("nvim-lsp-installer")
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-setup_servers()
+-- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
+-- or if the server is already installed).
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
 
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+    opts.capabilities = capabilities
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
+    -- before passing it onwards to lspconfig.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+end)
 EOF

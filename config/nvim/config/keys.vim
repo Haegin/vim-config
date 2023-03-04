@@ -19,7 +19,7 @@ let mapleader = ','
 noremap \ ,
 
 nnoremap <leader><space> :noh<CR>
-nnoremap <leader>h <cmd>Telescope old_files<CR>
+nnoremap <leader>h :History<CR>
 nnoremap <leader>gb :Git blame -wCM<CR>
 nnoremap <leader>gc <cmd>Telescope git_commits<CR>
 nnoremap <leader>gf <cmd>Telescope git_bcommits<CR>
@@ -27,9 +27,9 @@ nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>gr <cmd>Telescope git_branches<CR>
 nnoremap <leader>gt <cmd>Telescope git_stash<CR>
 nnoremap <leader>d :Dispatch<CR>
-nnoremap <leader>p <cmd>Telescope find_files<CR>
+nnoremap <leader>p :Files<CR>
 nnoremap <leader>t <cmd>Telescope git_files<CR>
-nnoremap <leader>b <cmd>Telescope buffers<CR>
+nnoremap <leader>b :Buffers<CR>
 " nnoremap <leader>f <cmd>lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>f <cmd>lua require('telescope').extensions.fzf_writer.staged_grep()<CR>
 nnoremap <leader>u :MundoToggle<CR>
@@ -62,11 +62,11 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 " command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+" inoremap <silent><expr> <C-Space> compe#complete()
+" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+" inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+" inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+" inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " Terminal Mode
 if has('nvim')
