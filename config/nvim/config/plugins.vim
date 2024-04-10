@@ -31,23 +31,20 @@ Plug 'tpope/vim-rhubarb'
 " }}}
 
 " neovim specific plugins {{{
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/denite.nvim'
 " Plug 'Shougo/echodoc.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-refactor' " this provides "go to def" etc
-Plug 'RRethy/nvim-treesitter-textsubjects'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 Plug 'ray-x/navigator.lua'
 " Plug 'kabouzeid/nvim-lspinstall', { 'branch': 'main' }
 Plug 'williamboman/nvim-lsp-installer', { 'branch': 'main' }
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'folke/trouble.nvim', { 'branch': 'main' }
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'folke/trouble.nvim', { 'branch': 'main' } " use { 'branch': 'main' } for stable
 Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 " Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
@@ -57,6 +54,23 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-writer.nvim'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
+" }}}
+
+" {{{ Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor' " this provides go to def etc
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'windwp/nvim-ts-autotag'
+Plug 'theHamsta/nvim-treesitter-pairs'
+" Plug 'RRethy/nvim-treesitter-textsubjects'
+" }}}
+
+" {{{ Mason and related plugins
+Plug 'williamboman/mason.nvim'
+Plug 'mhartington/formatter.nvim'
+Plug 'mfussenegger/nvim-lint'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
 " }}}
 
 " Completion (incl. sources) {{{
@@ -136,6 +150,9 @@ Plug 'lifepillar/pgsql.vim'
 " colorschemes {{{
 Plug 'sunjon/shade.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'ellisonleao/gruvbox.nvim'
+Plug 'sainnhe/sonokai'
+Plug 'RRethy/nvim-base16'
 " Plug 'chriskempson/base16-vim'
 " }}}
 
