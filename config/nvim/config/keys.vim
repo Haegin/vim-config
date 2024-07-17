@@ -28,10 +28,14 @@ nnoremap <leader>gr <cmd>Telescope git_branches<CR>
 nnoremap <leader>gt <cmd>Telescope git_stash<CR>
 " nnoremap <leader>d :Dispatch<CR>
 " nnoremap <leader>p :Files<CR>
-nnoremap <leader>p <cmd>Telescope git_files<CR>
-nnoremap <leader>tf <cmd>Telescope git_files<CR>
+nnoremap <leader>p <cmd>Telescope find_files<CR>
+nnoremap <leader>/ <cmd>Telescope live_grep<CR>
+nnoremap g/ <cmd>Telescope grep_string<CR>
+nnoremap <leader>tg <cmd>Telescope git_files<CR>
 nnoremap <leader>tr <cmd>Telescope resume<CR>
 nnoremap <leader>tb <cmd>Telescope buffers<CR>
+nnoremap <leader>tc <cmd>Telescope command_history<CR>
+nnoremap <leader>tp <cmd>Telescope yank_history<CR>
 nnoremap <leader>b :Buffers<CR>
 " nnoremap <leader>f <cmd>lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>f <cmd>lua require('telescope').extensions.fzf_writer.staged_grep()<CR>

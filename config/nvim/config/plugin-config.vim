@@ -65,17 +65,6 @@ let g:splitjoin_trailing_comma = 1
 let g:splitjoin_ruby_hanging_args = 0
 " }}}
 
-
-" {{{ Language Server
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['typescript-language-server', '--stdio'],
-    \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
-    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-    \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
-    \ }
-" }}}
-
 " {{{ Terraform
 let g:terraform_fmt_on_save = 1
 " }}}

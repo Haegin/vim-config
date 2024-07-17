@@ -19,6 +19,7 @@ endif
 lua << EOF
   require("plugin-config")
   require("colours")
+  require("langs")
   require("mason-config")
   require("treesitter-config")
 EOF

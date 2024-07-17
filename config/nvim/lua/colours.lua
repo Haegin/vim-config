@@ -1,3 +1,2 @@
 vim.opt.termguicolors = true
-vim.cmd('colorscheme base16-catppuccin-mocha')
-
+vim.cmd("colorscheme base16-tender")

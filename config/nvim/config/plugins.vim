@@ -42,7 +42,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 Plug 'ray-x/navigator.lua'
 " Plug 'kabouzeid/nvim-lspinstall', { 'branch': 'main' }
-Plug 'williamboman/nvim-lsp-installer', { 'branch': 'main' }
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'folke/trouble.nvim', { 'branch': 'main' } " use { 'branch': 'main' } for stable
 Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
@@ -53,7 +52,10 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-writer.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
+Plug 'gbprod/yanky.nvim'
+Plug 'rcarriga/nvim-notify'
 " }}}
 
 " {{{ Treesitter

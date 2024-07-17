@@ -28,6 +28,7 @@ Plug 'tpope/vim-unimpaired'
 " other authors {{{
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'chriskempson/base16-vim'
@@ -51,7 +52,6 @@ Plug 'godlygeek/tabular'
 " }}}
 
 " colorschemes {{{
-Plug 'vim-scripts/candy.vim'
 Plug 'vim-scripts/molokai'
 " }}}
 
@@ -106,10 +106,10 @@ let NERDTreeDirArrows = 1
 
 " Configure colour scheme {{{
 set background=dark
-let g:solarized_termcolors=256
-" let base16colorspace=256 " must be before colorscheme declaration
-colorscheme solarized
-"colorscheme base16-solarized
+" let g:solarized_termcolors=256
+let base16colorspace=256 " must be before colorscheme declaration
+" colorscheme solarized
+colorscheme base16-solarized-dark
 " }}}
 
 " Space errors settings {{{
@@ -198,3 +198,5 @@ command! -range HashNewToOld <line1>,<line2>s/\v([A-z_?]+):( *) /:\1 \2=> /g
 
 command! -range ReplaceQuotes <line1>,<line2>s/\v'([^']+)'/"\1"/g
 " }}}
+
+" colorscheme desert

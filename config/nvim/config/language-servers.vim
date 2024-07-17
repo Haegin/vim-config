@@ -38,32 +38,13 @@ local on_attach = function(client, bufnr)
 
 end
 
-local lsp_installer = require("nvim-lsp-installer")
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
--- or if the server is already installed).
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-
-    opts.capabilities = capabilities
-
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-
-    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-    -- before passing it onwards to lspconfig.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-end)
-
-vim.lsp.start({
-  name = 'gleam',
-  cmd = {'gleam', 'lsp'},
-  root_dir = vim.fs.dirname(vim.fs.find({'.git'}, { upward = true })[1]),
-})
+-- vim.lsp.start({
+--   name = 'gleam',
+--   cmd = {'gleam', 'lsp'},
+--   root_dir = vim.fs.dirname(vim.fs.find({'.git'}, { upward = true })[1]),
+-- })
 
 EOF
 
