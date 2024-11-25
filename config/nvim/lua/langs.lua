@@ -3,8 +3,8 @@ local lspconfig = require("lspconfig")
 lspconfig.elixirls.setup({})
 lspconfig.gleam.setup({})
 lspconfig.gopls.setup({})
-lspconfig.ruby_ls.setup({})
-lspconfig.tsserver.setup({})
+-- lspconfig.ruby_lsp.setup({})
+lspconfig.ts_ls.setup({})
 
 -- Keymaps
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -54,14 +54,13 @@ require("formatter").setup({
 	filetype = {
 		css = { require("formatter.filetypes.css").prettier },
 		elixir = { require("formatter.filetypes.elixir").mixformat },
-		eruby = { require("formatter.filetypes.eruby").erbformatter },
 		go = { require("formatter.filetypes.go").gofmt },
 		graphql = { require("formatter.filetypes.graphql").prettier },
 		javascript = { require("formatter.filetypes.javascript").prettier },
 		javascriptreact = { require("formatter.filetypes.javascriptreact").prettier },
 		lua = { require("formatter.filetypes.lua").stylua },
 		markdown = { require("formatter.filetypes.markdown").prettier },
-		ruby = { require("formatter.filetypes.ruby").rubocop },
+		ruby = { require("formatter.filetypes.ruby").standardrb },
 		sh = { require("formatter.filetypes.sh").shfmt },
 		terraform = { require("formatter.filetypes.terraform").terraformfmt },
 		-- yaml = { require("formatter.filetypes.yaml").yamlfmt },
@@ -76,7 +75,7 @@ require("formatter").setup({
 -- Linting {{{
 require("lint").linters_by_ft = {
 	go = { "golangcilint" },
-	ruby = { "rubocop" },
+	ruby = { "standardrb" },
 	javascript = { "eslint" },
 	javascriptreact = { "eslint" },
 	typescript = { "eslint" },

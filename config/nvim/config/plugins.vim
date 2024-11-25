@@ -158,7 +158,10 @@ Plug 'RRethy/nvim-base16'
 " Plug 'chriskempson/base16-vim'
 " }}}
 
+" AI {{{
 Plug 'github/copilot.vim', { 'branch': 'release' }
+Plug 'robitx/gp.nvim'
+" }}}
 
 
 call plug#end()

@@ -46,9 +46,6 @@ require("telescope").setup({
 		colorscheme = {
 			enable_preview = true,
 		},
-		find_files = {
-			hidden = true,
-		},
 	},
 
 	extensions = {
@@ -114,4 +111,20 @@ require("lualine").setup({
 		theme = "base16",
 	},
 })
+-- }}}
+
+-- GP {{{
+local conf = {
+	providers = {
+		copilot = {
+			endpoint = "https://api.githubcopilot.com/chat/completions",
+			secret = {
+				"bash",
+				"-c",
+				"cat ~/.config/github-copilot/apps.json | sed -e 's/.*oauth_token...//;s/\".*//'",
+			},
+		},
+	},
+}
+require("gp").setup(conf)
 -- }}}
