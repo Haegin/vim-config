@@ -2,13 +2,20 @@ call plug#begin('~/.config/nvim/bundle')
 
 """ Bundles {{{
 " tpope's plugins {{{
+if !exists('g:vscode')
+  Plug 'tpope/vim-dispatch'
+  Plug 'tpope/vim-commentary' " already built in to VSCode - see mappings below
+else
+  xmap gc  <Plug>VSCodeCommentary
+  nmap gc  <Plug>VSCodeCommentary
+  omap gc  <Plug>VSCodeCommentary
+  nmap gcc <Plug>VSCodeCommentaryLine
+endif
+Plug 'tpope/vim-fugitive'
+
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
-" Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tpope/vim-ragtag'
@@ -16,8 +23,6 @@ Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
-" Sensible isn't needed in neovim - it's built in
-" Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-cucumber', { 'for': 'cucumber' }
@@ -25,30 +30,24 @@ Plug 'tpope/vim-projectionist'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-speeddating'
-" Plug 'tpope/vim-dotenv'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-rhubarb'
 " }}}
 
 " neovim specific plugins {{{
-" Plug 'dense-analysis/ale'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/denite.nvim'
-" Plug 'Shougo/echodoc.vim'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neovim/nvim-lspconfig'
+if !exists('g:vscode')
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+end
 Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 Plug 'ray-x/navigator.lua'
-" Plug 'kabouzeid/nvim-lspinstall', { 'branch': 'main' }
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'folke/trouble.nvim', { 'branch': 'main' } " use { 'branch': 'main' } for stable
 Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 " Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
 Plug 'hoob3rt/lualine.nvim'
-Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-writer.nvim'
