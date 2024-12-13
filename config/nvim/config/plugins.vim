@@ -158,10 +158,21 @@ Plug 'RRethy/nvim-base16'
 " }}}
 
 " AI {{{
-Plug 'github/copilot.vim', { 'branch': 'release' }
 Plug 'robitx/gp.nvim'
-" }}}
 
+" Avante and related plugins
+" Deps
+Plug 'stevearc/dressing.nvim'
+Plug 'MunifTanjim/nui.nvim'
+
+" Optional deps
+Plug 'HakonHarnes/img-clip.nvim'
+Plug 'zbirenbaum/copilot.lua'
+
+" Yay, pass source=true if you want to build from source
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': { -> avante#build() } }
+" }}}
 
 call plug#end()
 " End of Bundles }}}
+"

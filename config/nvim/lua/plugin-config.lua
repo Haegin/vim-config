@@ -128,3 +128,13 @@ local conf = {
 }
 require("gp").setup(conf)
 -- }}}
+
+-- Avante {{{
+require("avante_lib").load()
+require("avante").setup({
+	provider = "openai",
+	openai = {
+		endpoint = "https://aigateway.instacart.tools/proxy/haegin.neovim.editor/openai/v1",
+	},
+})
+-- }}}

@@ -17,6 +17,7 @@ if has('macunix')
 endif
 
 lua << EOF
+  require("settings")
   require("plugin-config")
   require("colours")
   require("langs")
