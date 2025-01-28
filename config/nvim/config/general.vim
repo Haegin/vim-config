@@ -74,18 +74,30 @@ set statusline=%1*%2.3n\ %2*%3*\ %{get(g:,'coc_git_status','')}%{get(b:,'coc_
 " }}}
 
 "{{{ Tmux copy/paste
-if exists('$TMUX')
-  let g:clipboard = {
-        \   'name': 'Yank',
-        \   'copy': {
-        \      '+': 'yank',
-        \      '*': 'yank',
-        \    },
-        \   'paste': {
-        \      '+': 'tmux save-buffer -',
-        \      '*': 'tmux save-buffer -',
-        \   },
-        \   'cache_enabled': 1,
-        \ }
-endif
-"}}}
+"if exists('$TMUX')
+"  let g:clipboard = {
+"        \   'name': 'Yank',
+"        \   'copy': {
+"        \      '+': 'yank',
+"        \      '*': 'yank',
+"        \    },
+"        \   'paste': {
+"        \      '+': 'tmux save-buffer -',
+"        \      '*': 'tmux save-buffer -',
+"        \   },
+"        \   'cache_enabled': 1,
+"        \ }
+"endif
+""}}}
+
+" let vim.g.clipboard = {
+"   name = 'OSC 52',
+"   copy = {
+"     ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+"     ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+"   },
+"   paste = {
+"     ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+"     ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+"   },
+" }
