@@ -30,7 +30,6 @@ vim.o.previewheight = 40
 vim.o.grepprg = "rg --vimgrep"
 vim.o.timeoutlen = 500
 
-vim.o.undodir = "~/.config/nvim/undo"
 vim.o.undofile = true
 vim.o.undolevels = 1000
 vim.o.undoreload = 10000
