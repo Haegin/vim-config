@@ -6,3 +6,4 @@ vim/undo
 config/nvim/backup
 config/nvim/bundle
 config/nvim/undo
+config/nvim/lazy-lock.json
