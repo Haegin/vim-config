@@ -159,7 +159,7 @@ return {
 				python = { "isort", "black" },
 			},
 			format_after_save = {
-				lsp_format = "fallback",
+				lsp_format = "last",
 			},
 		},
 	},
