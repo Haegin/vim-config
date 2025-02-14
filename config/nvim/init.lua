@@ -37,3 +37,4 @@ vim.o.swapfile = false
 vim.o.backupcopy = "yes"
 
 require("config.lazy")
+require("config.keys")

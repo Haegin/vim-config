@@ -9,6 +9,7 @@ return {
 		},
 		keys = {
 			{ "<leader>p", "<cmd>Telescope find_files<cr>" },
+			{ "<leaher>h", "<cmd>Telescope oldfiles<cr>" },
 			{ "<leader>/", "<cmd>Telescope live_grep<CR>" },
 			{ "g/", "<cmd>Telescope grep_string<CR>" },
 			{ "<leader>tg", "<cmd>Telescope git_files<CR>" },
