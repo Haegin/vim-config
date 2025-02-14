@@ -81,6 +81,14 @@ return {
 
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("undo")
+
+			-- Lua function that takes a string argument and opens the telescope
+			-- grep_string for the given string
+			local grep = function(opts)
+				require("telescope.builtin").grep_string({ search = opts.fargs[1] })
+			end
+
+			vim.api.nvim_create_user_command("Rg", grep, { nargs = 1 })
 		end,
 	},
 }
