@@ -86,4 +86,7 @@ return {
 			vim.notify = require("notify")
 		end,
 	},
+	{
+		"AndrewRadev/splitjoin.vim",
+	},
 }
