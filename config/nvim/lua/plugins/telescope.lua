@@ -9,6 +9,12 @@ return {
 		},
 		keys = {
 			{ "<leader>p", "<cmd>Telescope find_files<cr>" },
+			{
+				"<leader>.",
+				function()
+					require("telescope.builtin").find_files({ cwd = vim.fn.expand("%:p:h") })
+				end,
+			},
 			{ "<leaher>h", "<cmd>Telescope oldfiles<cr>" },
 			{ "<leader>/", "<cmd>Telescope live_grep<CR>" },
 			{ "g/", "<cmd>Telescope grep_string<CR>" },
