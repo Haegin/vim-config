@@ -6,6 +6,7 @@ return {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "debugloop/telescope-undo.nvim" },
+			{ "nvim-telescope/telescope-ui-select.nvim" },
 		},
 		keys = {
 			{ "<leader>p", "<cmd>Telescope find_files<cr>" },
@@ -87,6 +88,7 @@ return {
 
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("undo")
+			require("telescope").load_extension("ui-select")
 
 			-- Lua function that takes a string argument and opens the telescope
 			-- grep_string for the given string
