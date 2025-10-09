@@ -11,6 +11,7 @@ return {
 	{ "tpope/vim-projectionist" },
 	{ "tpope/vim-vinegar" },
 	{ "wellle/targets.vim" },
+	-- { "comatory/gh-co.nvim", opts = {} },
 	{
 		"tpope/vim-rhubarb",
 		dependencies = {

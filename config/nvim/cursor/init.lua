@@ -30,7 +30,6 @@ vim.g.previewheight = 40
 vim.g.grepprg = "rg --vimgrep"
 vim.g.timeoutlen = 500
 
-vim.g.undodir = "~/.config/nvim/undo"
 vim.g.undofile = true
 vim.g.undolevels = 1000
 vim.g.undoreload = 10000
@@ -38,3 +37,6 @@ vim.g.noswapfile = true
 vim.g.backupcopy = "yes"
 
 require("cursor.lazy")
+
+vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true, silent = true })

@@ -145,6 +145,12 @@ return {
 		"stevearc/conform.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
+			formatters = {
+				rubocop = {
+					command = "bundle",
+					prepend_args = { "exec", "rubocop" },
+				},
+			},
 			formatters_by_ft = {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
@@ -184,6 +190,18 @@ return {
 					-- for the current filetype
 					require("lint").try_lint()
 				end,
+			})
+
+			vim.diagnostic.config({
+				underline = false,
+				virtual_text = true,
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = "",
+						[vim.diagnostic.severity.WARN] = "",
+						[vim.diagnostic.severity.INFO] = "",
+					},
+				},
 			})
 		end,
 	},

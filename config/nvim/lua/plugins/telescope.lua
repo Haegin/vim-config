@@ -83,6 +83,12 @@ return {
 							preview_height = 0.8,
 						},
 					},
+
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({
+							-- even more opts
+						}),
+					},
 				},
 			})
 

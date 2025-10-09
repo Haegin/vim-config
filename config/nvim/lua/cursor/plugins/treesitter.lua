@@ -1,1 +1,42 @@
-return {{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}}
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		main = "nvim-treesitter.configs",
+		opts = {
+			ensure_installed = {
+				"bash",
+				"diff",
+				"elixir",
+				"git_config",
+				"gitcommit",
+				"gitignore",
+				"go",
+				"gomod",
+				"gosum",
+				"graphql",
+				"html",
+				"javascript",
+				"json",
+				"lua",
+				"make",
+				"query",
+				"ruby",
+				"sql",
+				"toml",
+				"typescript",
+				"vim",
+				"vimdoc",
+				"yaml",
+				"terraform",
+			},
+			sync_install = false,
+			highlight = { enable = true },
+			indent = { enable = true },
+			endwise = { enable = true },
+		},
+		dependencies = {
+			{ "RRethy/nvim-treesitter-endwise" },
+		},
+	},
+}
