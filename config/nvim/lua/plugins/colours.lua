@@ -10,4 +10,6 @@ return {
 		end,
 	},
 	{ "jacoborus/tender.vim", lazy = true },
+	{ "arcticicestudio/nord-vim", lazy = true },
+	{ "AlexvZyl/nordic.nvim", lazy = true },
 }
