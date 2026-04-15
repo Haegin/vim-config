@@ -1,6 +1,16 @@
 -- Add the cursor directory to the runtimepath so we can keep our config separate
 -- vim.opt.runtimepath:prepend("~/.config/nvim/cursor")
 
+-- Set background explicitly so nvim doesn't query the terminal via OSC 10/11 on startup.
+-- Without this, nvim 0.12+ sends escape sequences to detect dark/light mode, which can
+-- appear as garbage text in the buffer over SSH due to response timing.
+vim.o.background = "dark"
+
+-- Increase ttimeoutlen to handle SSH latency for terminal escape sequence responses.
+-- The default of 50ms is too short for SSH round-trips, causing nvim to stop waiting
+-- for the full response and treat partial escape sequences as text input.
+vim.o.ttimeoutlen = 100
+
 vim.g.mapleader = ","
 vim.g.maplocalleader = " "
 

@@ -65,7 +65,6 @@ return {
 				return select.visual(source) or select.buffer(source)
 			end,
 		},
-		lazy = false,
 		keys = {
 			{ "<c-s>", "<cr>", ft = "copilot-chat", desc = "Submit prompt", remap = true },
 			{ "<leader>aa", "<cmd>CopilotChatToggle<cr>", desc = "Toggle chat", mode = { "n", "v" } },
