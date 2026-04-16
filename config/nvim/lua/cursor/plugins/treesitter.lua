@@ -1,10 +1,10 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs",
-		opts = {
-			ensure_installed = {
+		config = function()
+			require("nvim-treesitter").install({
 				"bash",
 				"diff",
 				"elixir",
@@ -29,12 +29,13 @@ return {
 				"vimdoc",
 				"yaml",
 				"terraform",
-			},
-			sync_install = false,
-			highlight = { enable = true },
-			indent = { enable = true },
-			endwise = { enable = true },
-		},
+			})
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					pcall(vim.treesitter.start)
+				end,
+			})
+		end,
 		dependencies = {
 			{ "RRethy/nvim-treesitter-endwise" },
 		},
