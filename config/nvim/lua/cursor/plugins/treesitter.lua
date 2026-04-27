@@ -1,10 +1,11 @@
 return {
 	{
-		"nvim-treesitter/nvim-treesitter",
+		"romus204/tree-sitter-manager.nvim",
 		lazy = false,
-		build = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter").install({
+		opts = {
+			highlight = true,
+			auto_install = false,
+			ensure_installed = {
 				"bash",
 				"diff",
 				"elixir",
@@ -29,15 +30,7 @@ return {
 				"vimdoc",
 				"yaml",
 				"terraform",
-			})
-			vim.api.nvim_create_autocmd("FileType", {
-				callback = function()
-					pcall(vim.treesitter.start)
-				end,
-			})
-		end,
-		dependencies = {
-			{ "RRethy/nvim-treesitter-endwise" },
+			},
 		},
 	},
 }
