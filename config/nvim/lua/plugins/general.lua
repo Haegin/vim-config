@@ -21,22 +21,75 @@ return {
 	{ "lewis6991/gitsigns.nvim", opts = { trouble = true } },
 	{
 		"folke/snacks.nvim",
-		opts = function()
-			-- Toggle the profiler
-			Snacks.toggle.profiler():map("<leader>dpp")
-			-- Toggle the profiler highlights
-			Snacks.toggle.profiler_highlights():map("<leader>dph")
-		end,
 		lazy = false,
+		priority = 1000,
+		opts = {
+			picker = {
+				enabled = true,
+				win = {
+					input = {
+						keys = {
+							["<c-a>"] = false,
+							["<c-e>"] = false,
+							["<c-u>"] = false,
+						},
+					},
+					list = {
+						keys = {
+							["<c-a>"] = false,
+							["<c-e>"] = false,
+							["<c-u>"] = false,
+						},
+					},
+				},
+			},
+			quickfile = { enabled = true },
+		},
 		keys = {
 			{
 				"<leader>dps",
 				function()
 					Snacks.profiler.scratch()
 				end,
-				desc = "Profiler Scratch Bufer",
+				desc = "Profiler scratch buffer",
 			},
+			{ "<leader>p", function() Snacks.picker.files() end, desc = "Find files" },
+			{
+				"<leader>.",
+				function()
+					Snacks.picker.files({ cwd = vim.fn.expand("%:p:h") })
+				end,
+				desc = "Find files (buffer dir)",
+			},
+			{ "<leader>h", function() Snacks.picker.recent() end, desc = "Recent files" },
+			{ "<leader>/", function() Snacks.picker.grep() end, desc = "Live grep" },
+			{
+				"g/",
+				function() Snacks.picker.grep_word() end,
+				desc = "Grep word under cursor",
+				mode = { "n", "x" },
+			},
+			{ "<leader>tg", function() Snacks.picker.git_files() end, desc = "Git files" },
+			{ "<leader>tr", function() Snacks.picker.resume() end, desc = "Resume picker" },
+			{ "<leader>tc", function() Snacks.picker.command_history() end, desc = "Command history" },
+			{ "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
+			{ "<leader>gc", function() Snacks.picker.git_log() end, desc = "Git log" },
+			{ "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git log (current file)" },
+			{ "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git status" },
+			{ "<leader>gr", function() Snacks.picker.git_branches() end, desc = "Git branches" },
+			{ "<leader>gt", function() Snacks.picker.git_stash() end, desc = "Git stash" },
+			{ "<leader>u", function() Snacks.picker.undo() end, desc = "Undo history" },
 		},
+		config = function(_, opts)
+			require("snacks").setup(opts)
+
+			Snacks.toggle.profiler():map("<leader>dpp")
+			Snacks.toggle.profiler_highlights():map("<leader>dph")
+
+			vim.api.nvim_create_user_command("Rg", function(o)
+				Snacks.picker.grep_word({ search = o.fargs[1] })
+			end, { nargs = 1 })
+		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
