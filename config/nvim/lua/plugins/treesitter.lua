@@ -21,6 +21,8 @@ return {
 				"json",
 				"lua",
 				"make",
+				"markdown",
+				"markdown_inline",
 				"query",
 				"ruby",
 				"sql",

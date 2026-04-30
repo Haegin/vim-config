@@ -26,12 +26,17 @@ return {
 		opts = {
 			picker = {
 				enabled = true,
+				sources = {
+					files = { hidden = true },
+				},
 				win = {
 					input = {
 						keys = {
 							["<c-a>"] = false,
 							["<c-e>"] = false,
 							["<c-u>"] = false,
+							["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+							["<c-g>"] = { "toggle_ignored", mode = { "i", "n" } },
 						},
 					},
 					list = {
@@ -39,11 +44,25 @@ return {
 							["<c-a>"] = false,
 							["<c-e>"] = false,
 							["<c-u>"] = false,
+							["<c-h>"] = "toggle_hidden",
+							["<c-g>"] = "toggle_ignored",
 						},
 					},
 				},
 			},
 			quickfile = { enabled = true },
+			zen = { enabled = true, toggles = { dim = false } },
+			styles = {
+				zen = {
+					width = 80,
+					backdrop = { transparent = false, blend = 0 },
+					wo = {
+						cursorline = false,
+						wrap = true,
+						linebreak = true,
+					},
+				},
+			},
 		},
 		keys = {
 			{
@@ -79,6 +98,7 @@ return {
 			{ "<leader>gr", function() Snacks.picker.git_branches() end, desc = "Git branches" },
 			{ "<leader>gt", function() Snacks.picker.git_stash() end, desc = "Git stash" },
 			{ "<leader>u", function() Snacks.picker.undo() end, desc = "Undo history" },
+			{ "<leader>z", function() Snacks.zen() end, desc = "Zen mode" },
 		},
 		config = function(_, opts)
 			require("snacks").setup(opts)
@@ -142,5 +162,11 @@ return {
 	},
 	{
 		"AndrewRadev/splitjoin.vim",
+	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		ft = { "markdown" },
+		opts = {},
 	},
 }
